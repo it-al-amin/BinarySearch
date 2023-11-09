@@ -1,0 +1,44 @@
+int findMin(vector<int>&a)
+{
+	// Write your code here.
+    int l=0,h=a.size()-1,n;
+	if(a[0]<=a[h])
+	{
+		return a[0];
+	}
+	n=h+1;
+	while(l<=h)
+	{
+		int m=(l+h)>>1;
+		int p=(m-1+n)%n;
+		int ne=(m+1)%n;
+		if(a[p]>a[m]&&a[m]<a[ne])
+		{
+			//cout<<a[m]<<"\n";
+			return a[m];
+		}
+/*
+if duplicate then 
+if(a[l]==a[m]&&a[m]==a[h])
+{
+l=l+1;
+h=h-1;
+continue;
+}
+*/
+    if(a[0]<=a[m])//sorted part  erase this as we can not find this search on unsorted part.
+		{
+                       
+        l = m + 1;
+                       
+        }
+		else
+		{
+			
+		 h=m-1;
+			
+		}
+		
+	}
+	return -1;
+}
