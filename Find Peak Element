@@ -17,6 +17,12 @@ int findPeakElement(vector<int> &a) {
     while(l<=h)
     {
         m=(l+h)>>1;
+   while(a[l]==a[h])//duplicate
+        {
+            l++;
+            h--;
+            continue;
+        }
         p=-1e9-7;
         q=p;
         if(m-1>=0)
