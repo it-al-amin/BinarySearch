@@ -1,1 +1,72 @@
+ int search(int a[], int l, int h, int key){
+        // l: The starting index
+        // h: The ending index, you have to search the key in this range
+        
+        //complete the function here
+        if(l==0&&h==0)
+        {
+            if(a[0]==key)
+            {
+                return 0;
+            }
+            return -1;
+        }
+        if(a[l]==key)
+        {
+            return l;
+        }
+        if(a[h]==key)
+        {
+            return h;
+        }
+        int ans=-1;
+        while(l<=h)
+        {
+            int m=(l+h)>>1;
+            if(a[m]==key)
+            {
+                ans=m;
+                break;
+            }
 
+/*   
+                 while (a[l] == a[m] && l < m) // duplicate
+                  {
+                          l++;
+                     }
+
+                     while (a[m] == a[h] && h > m) // duplicate
+                       {
+                         h--;
+                         }
+
+*/
+
+            if(a[l]<=a[m])//left haft is sorted
+            {
+                if(a[l]<=key&&key<a[m])
+                {
+                   h=m-1;
+                }
+                else
+                {
+                    l=m+1;
+                }
+            }
+            else//right half is sorted
+            {
+                if(a[m]<key&&a[h]>=key)
+                {
+                    l=m+1;
+                }
+                else
+                {
+                   h=m-1;
+                }
+            }
+          
+        }
+        
+        return ans;
+        
+    }
